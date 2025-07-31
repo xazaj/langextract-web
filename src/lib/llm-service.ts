@@ -1,6 +1,6 @@
 // LLM 服务抽象层 - 支持多种模型提供商
 
-import { ExtractionRequest, AnnotatedDocument, Extraction } from './types';
+import { ExtractionRequest, AnnotatedDocument, Extraction, AlignmentStatus } from './types';
 import { config, getApiKey, debugLog } from './config';
 
 // 抽象 LLM 服务接口
@@ -55,7 +55,7 @@ export abstract class BaseLLMService {
             start_pos: wordStart,
             end_pos: entityEnd
           },
-          alignment_status: 'match_exact',
+          alignment_status: AlignmentStatus.MATCH_EXACT,
           extraction_index: extractions.length,
           attributes: { '类型': '人名' }
         });
@@ -70,7 +70,7 @@ export abstract class BaseLLMService {
             start_pos: wordStart,
             end_pos: wordEnd
           },
-          alignment_status: 'match_exact',
+          alignment_status: AlignmentStatus.MATCH_EXACT,
           extraction_index: extractions.length,
           attributes: { '类型': '公司' }
         });
@@ -84,7 +84,7 @@ export abstract class BaseLLMService {
             start_pos: wordStart,
             end_pos: wordEnd
           },
-          alignment_status: 'match_exact',
+          alignment_status: AlignmentStatus.MATCH_EXACT,
           extraction_index: extractions.length,
           attributes: { '单位': this.getAmountUnit(word) }
         });
@@ -98,7 +98,7 @@ export abstract class BaseLLMService {
             start_pos: wordStart,
             end_pos: wordEnd
           },
-          alignment_status: 'match_exact',
+          alignment_status: AlignmentStatus.MATCH_EXACT,
           extraction_index: extractions.length,
           attributes: { '类型': '日期' }
         });

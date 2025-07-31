@@ -129,7 +129,8 @@ export function ExtractionVisualizer({ document, config: propConfig }: Props) {
   };
   
   const escapeHtml = (text: string): string => {
-    const div = document.createElement('div');
+    if (typeof window === 'undefined') return text; // SSR safety
+    const div = window.document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
   };
@@ -138,7 +139,7 @@ export function ExtractionVisualizer({ document, config: propConfig }: Props) {
     const dataStr = JSON.stringify(document, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
     const url = URL.createObjectURL(dataBlob);
-    const link = document.createElement('a');
+    const link = window.document.createElement('a');
     link.href = url;
     link.download = `extraction-results-${Date.now()}.json`;
     link.click();
