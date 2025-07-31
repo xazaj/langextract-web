@@ -1,7 +1,21 @@
 {
   "name": "langextract-web",
   "version": "0.1.0",
+  "description": "A web-based intelligent text extraction platform powered by large language models",
   "private": true,
+  "author": "xazaj",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xazaj/langextract-web.git"
+  },
+  "keywords": [
+    "text-extraction",
+    "llm",
+    "nextjs",
+    "typescript",
+    "nlp",
+    "information-extraction"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
